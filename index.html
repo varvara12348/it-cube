@@ -3,387 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Государственное бюджетное профессиональное образовательное учреждение Владимирской области «Ковровский транспортный колледж</title>
+    <title>IT-куб Ковров | Центр цифрового образования детей</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Базовые стили */
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
-            --accent-color: #8b5cf6;
-            --light-bg: #f8faff;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-        }
-
+        /* Общие стили для всех страниц */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-dark: #1a5f7a;
+            --primary: #2a8cba;
+            --primary-light: #57c5f7;
+            --accent: #0ea5e9;
+            --light-blue: #e0f7ff;
+            --light-gray: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #555;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--light-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Новый хедер с асимметричным дизайном */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.1) 0%, 
-                rgba(118, 75, 162, 0.05) 100%);
-            position: relative;
-            overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 95%);
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(26, 95, 122, 0.2);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            right: 5%;
-            width: 400px;
-            height: 400px;
-            background: var(--primary-gradient);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            opacity: 0.1;
-            animation: morphing 15s infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 15%;
-            left: 5%;
-            width: 300px;
-            height: 300px;
-            background: var(--secondary-gradient);
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            opacity: 0.08;
-            animation: morphing 20s infinite reverse;
-        }
-
-        @keyframes morphing {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        }
-
-        .nav {
-            padding: 2rem 0;
-            position: relative;
-            z-index: 100;
-        }
-
-        .nav-container {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
+            padding: 15px 0;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            position: relative;
-            padding-left: 50px;
-        }
-
-        .logo::before {
-            content: '{}';
-            position: absolute;
-            left: 0;
-            font-size: 2rem;
-            color: #667eea;
-        }
-
-        .nav-links {
             display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            padding: 8rem 0;
-            max-width: 800px;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #1e293b 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        .cta-button {
-            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 1rem 2.5rem;
-            background: var(--primary-gradient);
-            color: white;
+            gap: 15px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: var(--transition);
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        .logo:hover {
+            transform: translateY(-2px);
         }
 
-        /* Асимметричная сетка для контента */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin: 6rem auto;
-            position: relative;
-        }
-
-        .content-grid::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 200px;
-            height: 200px;
-            background: var(--secondary-gradient);
+        .logo-img {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            opacity: 0.05;
-            z-index: -1;
-        }
-
-        .main-content {
-            position: relative;
-        }
-
-        .sidebar {
-            position: sticky;
-            top: 2rem;
-            align-self: start;
-        }
-
-        /* Карточки с уникальной формой */
-        .feature-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 80px;
-            height: 80px;
-            background: var(--primary-gradient);
-            border-radius: 0 25px 0 50px;
-            opacity: 0.1;
-        }
-
-        .feature-card h3 {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            position: relative;
-            padding-left: 2rem;
+            font-family: 'Courier New', monospace;
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .feature-card h3::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
+        .logo-text {
+            color: var(--white);
         }
 
-        /* Анимация для новостей */
-        .news-feed {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        .news-item {
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid transparent;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.9) 0%, 
-                rgba(248, 250, 255, 0.9) 100%);
-            border-radius: 15px;
-            transition: all 0.3s ease;
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Навигация */
+        .main-nav {
+            display: flex;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 30px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
             cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(42, 140, 186, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(42, 140, 186, 0.4);
+        }
+
+        .btn-large {
+            padding: 16px 35px;
+            font-size: 1.1rem;
+        }
+
+        /* Стили только для главной страницы */
+        .hero-section {
+            padding: 80px 0 40px;
             position: relative;
             overflow: hidden;
         }
 
-        .news-item::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 0;
+            background: linear-gradient(135deg, rgba(42, 140, 186, 0.05), rgba(87, 197, 247, 0.05));
+            z-index: -1;
         }
 
-        .news-item:hover {
-            border-left-color: var(--accent-color);
-            transform: translateX(10px);
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
         }
 
-        .news-item:hover::before {
-            opacity: 0.03;
+        .hero-title {
+            font-size: 3rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
         }
 
-        .news-date {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
         }
 
-        .news-title {
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(42, 140, 186, 0.3);
+            transition: var(--transition);
         }
 
-        /* Стиль для виджетов */
-        .info-widget {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(42, 140, 186, 0.4);
         }
 
-        .info-widget::after {
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 5px solid var(--primary-light);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
             content: '';
             position: absolute;
-            bottom: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: var(--secondary-gradient);
-            border-radius: 50%;
-            opacity: 0.05;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border-radius: 2px;
         }
 
-        /* Уникальный футер */
-        .footer {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 6rem 0 3rem;
-            margin-top: 6rem;
-            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .footer-grid {
+        .why-us-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .footer-section h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #94a3b8;
+        .why-us-item {
+            text-align: center;
+            padding: 25px;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .why-us-item:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .why-us-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--light-blue);
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 10px;
         }
 
-        .footer-section h4::after {
+        .footer-column h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 30px;
-            height: 2px;
-            background: var(--primary-gradient);
+            width: 40px;
+            height: 3px;
+            background: var(--primary-light);
+            border-radius: 2px;
         }
 
         .footer-links {
@@ -391,438 +369,304 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            color: #cbd5e1;
+            color: #ddd;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
         .footer-links a:hover {
-            color: #a78bfa;
-        }
-
-        .footer-links a::before {
-            content: '→';
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .footer-links a:hover::before {
-            opacity: 1;
+            color: var(--primary-light);
             transform: translateX(5px);
         }
 
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
         /* Адаптивность */
-        @media (max-width: 1024px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
             }
-
-            .sidebar {
-                position: static;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .section-title {
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .header-container {
+                flex-wrap: wrap;
             }
-
-            .nav-links {
+            
+            .main-nav {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
                 display: none;
             }
-
-            .feature-card {
-                padding: 1.5rem;
+            
+            .main-nav.active {
+                display: block;
             }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 10px;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 15px;
+                border-radius: var(--radius);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
             }
         }
 
-        /* Дополнительные эффекты */
-        .floating-element {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: -1;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, 100px) rotate(90deg); }
-            50% { transform: translate(50px, 200px) rotate(180deg); }
-            75% { transform: translate(-100px, 100px) rotate(270deg); }
-        }
-
-        /* Кнопки действий */
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .secondary-button {
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 2px solid #cbd5e1;
-            color: var(--text-primary);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .secondary-button:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            transform: translateY(-2px);
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-card {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Плавающие элементы фона -->
-    <div class="floating-element" style="top: 20%; left: 5%;"></div>
-    <div class="floating-element" style="top: 60%; right: 10%; animation-delay: -5s;"></div>
-    <div class="floating-element" style="top: 80%; left: 20%; animation-delay: -10s;"></div>
-
-    <!-- Херо-секция -->
-    <section class="hero">
-        <div class="container">
-            <nav class="nav">
-                <div class="nav-container">
-                    <a href="#" class="logo"></a>
-                    <ul class="nav-links">
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#courses">Курсы</a></li>
-                        <li><a href="#news">Новости</a></li>
-                        <li><a href="#contacts">Контакты</a></li>
-                        <li><a href="#community">Сообщество</a></li>
-                    </ul>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">
+                    <span>IT-CUBE</span>
                 </div>
+                <div class="logo-text">
+                    <h1>IT-куб Ковров</h1>
+                    <p>Центр цифрового образования</p>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> О нас</a></li>
+                    <li><a href="courses.html" class="nav-link"><i class="fas fa-laptop-code"></i> Направления</a></li>
+                    <li><a href="enroll.html" class="nav-link"><i class="fas fa-pen-alt"></i> Запись</a></li>
+                    <li><a href="contacts.html" class="nav-link"><i class="fas fa-address-book"></i> Контакты</a></li>
+                </ul>
             </nav>
+        </div>
+    </header>
 
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Качественное образование<br>
-                    <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                        Создается здесь
-                    </span>
-                </h1>
-                <p class="hero-subtitle">
-                   <p>Колледж предлагает программы подготовки специалистов среднего звена для выпускников 9 классов. Обучение доступно как на бюджетной, так и на коммерческой основе.</p>
-
-<p>Для иногородних студентов предусмотрено комфортабельное общежитие всего в нескольких минутах ходьбы от учебных корпусов. Четырёхэтажное здание рассчитано на 238 мест.</p>
-
-<p>Инфраструктура колледжа включает 43 учебных кабинета, 18 мастерских для практических занятий, 8 специализированных лабораторий и 2 спортивных зала. Общая численность студентов составляет 1553 человека.</p>
-
-<p>Мы тесно сотрудничаем с ведущими предприятиями региона: ОАО «ЗИД», КЭМЗ, ОА «Сударь», ОО «ДорТех», ОАО «ПАТП», «Аскона» и другими компаниями, что обеспечивает качественную практическую подготовку и дальнейшее трудоустройство выпускников.</p>
+    <!-- Контент главной страницы -->
+    <main>
+        <div class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Цифровое образование для будущего</h1>
+                    <p class="hero-subtitle">IT-куб Ковров — современная площадка, где дети от 7 до 18 лет осваивают востребованные IT-навыки под руководством опытных наставников</p>
+                    <a href="enroll.html" class="hero-btn">
+                        <i class="fas fa-rocket"></i>
+                        Записаться на курсы
+                    </a>
+                </div>
                 
-                <div class="action-buttons">
-                    <a href="#courses" class="cta-button">
-                        Выбрать курс
-                        <span>→</span>
-                    </a>
-                    <a href="#about" class="secondary-button">
-                        О колледже
-                    </a>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Бесплатное обучение</h3>
+                        <p>Все курсы абсолютно бесплатны благодаря государственной поддержке</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3>Современное оборудование</h3>
+                        <p>VR-шлемы, 360° камеры, робототехнические наборы, интерактивные комплексы</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Сертификат об окончании</h3>
+                        <p>Все выпускники получают официальный документ, подтверждающий освоение курса</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chess-queen"></i>
+                        </div>
+                        <h3>Шахматный клуб</h3>
+                        <p>Дополнительные занятия по шахматам для развития логического мышления</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Основной контент -->
-    <div class="container">
-        <div class="content-grid">
-            <main class="main-content">
-                <!-- Новостная лента -->
-                <section class="news-feed">
-                    <h2 style="margin-bottom: 2rem; font-size: 1.8rem; color: var(--text-primary);">
-                        Актуальные события
-                    </h2>
-                    
-                    <article class="news-item">
-                        <div class="news-date">19 января 2026</div>
-                        <h3 class="news-title">Финальные соревнования по мини‑футболу IT-кластера</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                            Команды IT-направления продемонстрировали не только технические навыки, 
-                            но и отличную физическую подготовку.
-                        </p>
-                    </article>
-                    
-                    <article class="news-item">
-                        <div class="news-date">19 января 2026</div>
-                        <h3 class="news-title">Памяти В. А. Дегтярёва: уроки инноваций</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                            Исторический час, посвященный достижениям в области техники и инженерии.
-                        </p>
-                    </article>
-                    
-                    <article class="news-item">
-                        <div class="news-date">16 января 2026</div>
-                        <h3 class="news-title">Веб-дизайн: от идеи к реализации</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                            Практический мастер-класс по созданию современных пользовательских интерфейсов.
-                        </p>
-                    </article>
-                    
-                    <article class="news-item">
-                        <div class="news-date">15 января 2026</div>
-                        <h3 class="news-title">Digital Wellbeing для IT-специалистов</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                            Как сохранить здоровье при работе с цифровыми технологиями.
-                        </p>
-                    </article>
-                </section>
-
-                <!-- Информационные карточки -->
-                <section style="margin-top: 3rem;">
-                    <h2 style="margin-bottom: 2rem; font-size: 1.8rem; color: var(--text-primary);">
-                        Наши преимущества
-                    </h2>
-                    
-                    <div class="feature-card">
-                        <h3>Современные технологии</h3>
-                        <p style="color: var(--text-secondary);">
-                            Обучение на актуальном оборудовании с использованием последних версий 
-                            программного обеспечения и фреймворков.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <h3>Преподаватели-практики</h3>
-                        <p style="color: var(--text-secondary);">
-                            Все занятия ведут действующие IT-специалисты с опытом работы 
-                            в ведущих компаниях региона.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <h3>Трудоустройство</h3>
-                        <p style="color: var(--text-secondary);">
-                            Партнерские программы с IT-компаниями гарантируют стажировки 
-                            и дальнейшее трудоустройство выпускников.
-                        </p>
-                    </div>
-                </section>
-            </main>
-
-            <!-- Сайдбар -->
-            <aside class="sidebar">
-                <!-- Виджет курсов -->
-                <div class="info-widget">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">
-                        Ближайшие курсы
-                    </h3>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white;">
-                                🎓
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--text-primary);">
-                                    Веб-дизайн и UX/UI
-                                </div>
-                                <div style="font-size: 0.9rem; color: var(--accent-color);">
-                                    Старт: 18.12.2025
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--secondary-gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white;">
-                                💻
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--text-primary);">
-                                    Frontend Разработка
-                                </div>
-                                <div style="font-size: 0.9rem; color: var(--accent-color);">
-                                    Старт: 08.12.2025
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#courses" class="secondary-button" style="width: 100%; text-align: center; margin-top: 1rem;">
-                        Все курсы
-                    </a>
-                </div>
-
-                <!-- Виджет контактов -->
-                <div class="info-widget">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">
-                        Быстрая связь
-                    </h3>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <div style="width: 40px; height: 40px; background: rgba(102, 126, 234, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #667eea;">
-                                ✉️
-                            </div>
-                            <div>
-                                <div style="font-size: 0.9rem; color: var(--text-secondary);">
-                                    Email
-                                </div>
-                                <div style="font-weight: 600; color: var(--text-primary);">
-                                    it@ktk-digital.ru
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: rgba(118, 75, 162, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #764ba2;">
-                                📱
-                            </div>
-                            <div>
-                                <div style="font-size: 0.9rem; color: var(--text-secondary);">
-                                    Телефон
-                                </div>
-                                <div style="font-weight: 600; color: var(--text-primary);">
-                                    +7 (49232) 5-55-55
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#contacts" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">
-                        Написать нам
-                    </a>
-                </div>
-            </aside>
-        </div>
-    </div>
-
-    <!-- Футер -->
-    <footer class="footer">
+        
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4></h4>
-                    <p style="color: #94a3b8; margin-top: 1rem;">
-                        IT-направление Ковровского транспортного колледжа. 
-                        Современное образование для цифрового будущего.
-                    </p>
+            <div class="content-card" style="margin-top: 60px;">
+                <h2 class="section-title">Почему выбирают IT-куб?</h2>
+                <div class="why-us-grid">
+                    <div class="why-us-item">
+                        <div class="why-us-number">01</div>
+                        <h3>Актуальные направления</h3>
+                        <p>Мы обучаем самым востребованным IT-специальностям: Python, мобильная разработка, робототехника, кибербезопасность</p>
+                    </div>
+                    
+                    <div class="why-us-item">
+                        <div class="why-us-number">02</div>
+                        <h3>Практический подход</h3>
+                        <p>80% времени уделяется практическим занятиям и проектной работе. Теория сразу закрепляется на реальных задачах</p>
+                    </div>
+                    
+                    <div class="why-us-item">
+                        <div class="why-us-number">03</div>
+                        <h3>Опытные наставники</h3>
+                        <p>Преподаватели — практикующие специалисты из IT-индустрии и партнерских компаний</p>
+                    </div>
+                    
+                    <div class="why-us-item">
+                        <div class="why-us-number">04</div>
+                        <h3>Проектное обучение</h3>
+                        <p>Каждый ученик создает собственный проект, который может стать частью портфолио для поступления в вуз</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section" style="text-align: center; margin: 80px 0;">
+                <h2 style="color: var(--primary-dark); margin-bottom: 20px;">Готовы начать?</h2>
+                <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Запишите ребенка на бесплатные курсы и откройте для него мир цифровых технологий</p>
+                <a href="enroll.html" class="btn btn-primary btn-large">
+                    <i class="fas fa-user-plus"></i>
+                    Записаться сейчас
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>IT-куб Ковров</h3>
+                    <p>Центр цифрового образования детей, где школьники осваивают востребованные IT-навыки на бесплатной основе.</p>
+                    <div class="social-links">
+                        <a href="https://vk.com/club206722684" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Обучение</h4>
+                <div class="footer-column">
+                    <h3>Направления</h3>
                     <ul class="footer-links">
-                        <li><a href="#courses">Все курсы</a></li>
-                        <li><a href="#format">Формы обучения</a></li>
-                        <li><a href="#prices">Стоимость</a></li>
-                        <li><a href="#grants">Гранты</a></li>
+                        <li><a href="courses.html"><i class="fas fa-code"></i> Программирование на Python</a></li>
+                        <li><a href="courses.html"><i class="fas fa-mobile-alt"></i> Мобильная разработка</a></li>
+                        <li><a href="courses.html"><i class="fas fa-robot"></i> Робототехника</a></li>
+                        <li><a href="courses.html"><i class="fas fa-server"></i> Системное администрирование</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Ресурсы</h4>
+                <div class="footer-column">
+                    <h3>Ссылки</h3>
                     <ul class="footer-links">
-                        <li><a href="#blog">Блог</a></li>
-                        <li><a href="#library">Библиотека</a></li>
-                        <li><a href="#projects">Проекты</a></li>
-                        <li><a href="#events">Мероприятия</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Контакты</h4>
-                    <ul class="footer-links">
-                        <li><a href="#address">Ковров, ул. Малеева, 2</a></li>
-                        <li><a href="mailto:info@ktk-digital.ru">info@.ru</a></li>
-                        <li><a href="#social">Соцсети</a></li>
-                        <li><a href="#map">Карта проезда</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+                        <li><a href="courses.html"><i class="fas fa-laptop-code"></i> Направления</a></li>
+                        <li><a href="enroll.html"><i class="fas fa-pen-alt"></i> Запись на курсы</a></li>
+                        <li><a href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div style="text-align: center; padding-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8;">
-                <p>© 2026 Ковровский транспортный колледж | IT-Направление</p>
+            <div class="copyright">
+                <p>&copy; 2023 IT-куб Ковров. Все права защищены.</p>
+                <p>Сеть центров цифрового образования детей «ИТ-КУБ»</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+        // Мобильное меню
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        });
+
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const nav = document.getElementById('mainNav');
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
                 }
             });
         });
 
-        // Анимация при скролле
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Анимация элементов
-        document.querySelectorAll('.feature-card, .news-item, .info-widget').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
-        });
-
-        // Параллакс эффект
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.floating-element');
-            
-            parallaxElements.forEach((el, index) => {
-                const speed = 0.1 + (index * 0.05);
-                const yPos = -(scrolled * speed);
-                el.style.transform = `translateY(${yPos}px)`;
-            });
-        });
-
-        // Интерактивность для новостей
-        document.querySelectorAll('.news-item').forEach(item => {
-            item.addEventListener('click', function() {
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = 'translateX(10px) scale(1)';
-                }, 150);
-            });
+        // Подсветка активной ссылки
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
         });
     </script>
 </body>
